@@ -91,6 +91,5 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems: "center",
         justifyContent: "space-between",
-        // backgroundColor: Colors.medium
     }
 })
