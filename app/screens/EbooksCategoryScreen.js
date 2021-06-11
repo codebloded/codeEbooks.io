@@ -67,7 +67,7 @@ const ebooksData = [
     },
 ]
 
-export default function EbooksCategoryScreen() {
+export default function EbooksCategoryScreen({ navigation }) {
     return (
         <Screen style={styles.container}>
             <FlatList
@@ -78,6 +78,7 @@ export default function EbooksCategoryScreen() {
                     <Category
                         title={item.title}
                         image={item.image}
+                        onPress={() => navigation.navigate('CategoryBooks')}
                     />
                 )}
             />
@@ -91,5 +92,6 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems: "center",
         justifyContent: "space-between",
+        backgroundColor: Colors.white
     }
 })

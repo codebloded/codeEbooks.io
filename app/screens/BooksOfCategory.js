@@ -36,7 +36,9 @@ const booksData = [
     },
 ]
 
-export default function BooksOfCategory() {
+export default function BooksOfCategory({ route, navigation }) {
+    const data = route.params
+    console.log(data)
     return (
         <Screen style={styles.container}>
             <FlatList
@@ -48,6 +50,8 @@ export default function BooksOfCategory() {
                         image={item.image}
                         pages={item.pages}
                         size={item.size}
+                        onPress={() => navigation.navigate("bookInfo")}
+
                     />
                 )}
             />

@@ -13,7 +13,7 @@ export default function BookInfoScreen({ title, size, pages, description }) {
                 <Image style={styles.image} source={require("../assets/pi.png")} />
                 <View style={styles.info}>
                     <AppText>{title}</AppText>
-                    <AppText>Size:  {size}</AppText>
+                    <AppText>Size:  {size} MB</AppText>
                     <AppText>Pages:  {pages}</AppText>
                 </View>
             </View>
@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     info: {
-        width: 200,
+        width: 180,
+        alignItems: "center"
 
     },
     image: {

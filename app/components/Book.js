@@ -4,11 +4,10 @@ import Colors from '../config/colors'
 import AppText from './AppText'
 
 
-export default function Book({ title, image, pages, size }) {
+export default function Book({ title, image, pages, onPress, size }) {
     return (
 
-        <TouchableHighlight>
-
+        <TouchableHighlight onPress={onPress}>
             <View style={styles.container}>
                 <Image style={styles.image} source={image} />
                 <AppText>{title}</AppText>
@@ -27,7 +26,7 @@ export default function Book({ title, image, pages, size }) {
 const styles = StyleSheet.create({
     container: {
         width: 300,
-        height: 400,
+        height: 350,
         margin: 10,
         borderWidth: 0,
         borderRadius: 10,
