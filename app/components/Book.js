@@ -9,7 +9,7 @@ export default function Book({ title, image, pages, onPress, size }) {
 
         <TouchableHighlight onPress={onPress}>
             <View style={styles.container}>
-                <Image style={styles.image} source={image} />
+                <Image style={styles.image} source={{ uri: image }} />
                 <AppText>{title}</AppText>
 
                 <View style={styles.detailsContainer}>

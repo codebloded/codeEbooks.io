@@ -1,44 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useState } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { db } from '../Backend/firebase';
 import Book from '../components/Book'
 import Screen from '../components/Screen'
 
-const booksData = [
-    {
-        title: "You don't know pJS",
-        image: require("../assets/db.png"),
-        size: "4.4mb",
-        pages: "223"
-    },
-    {
-        title: "You don't knowfg pJS",
-        image: require("../assets/db.png"),
-        size: "4.4mb",
-        pages: "223"
-    },
-    {
-        title: "You don't know dfg JS",
-        image: require("../assets/db.png"),
-        size: "4.4mb",
-        pages: "223"
-    },
-    {
-        title: "You don't know  sdf JS",
-        image: require("../assets/db.png"),
-        size: "4.4mb",
-        pages: "223"
-    },
-    {
-        title: "You don't know w JS",
-        image: require("../assets/c.png"),
-        size: "4.4mb",
-        pages: "223"
-    },
-]
 
 export default function BooksOfCategory({ route, navigation }) {
-    const data = route.params
-    console.log(data)
+    const booksData = route.params
+    console.log("BooksOfCategory")
+    console.log(booksData);
+
     return (
         <Screen style={styles.container}>
             <FlatList
@@ -47,10 +19,10 @@ export default function BooksOfCategory({ route, navigation }) {
                 renderItem={({ item }) => (
                     <Book
                         title={item.title}
-                        image={item.image}
+                        image={item.thumbnailUrl}
                         pages={item.pages}
                         size={item.size}
-                        onPress={() => navigation.navigate("bookInfo")}
+                        onPress={() => navigation.navigate("bookInfo", item)}
 
                     />
                 )}

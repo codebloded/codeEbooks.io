@@ -4,6 +4,7 @@ import Colors from '../config/colors'
 import AppText from './AppText'
 
 export default function Category({ title, image, onPress }) {
+
     return (
         <TouchableHighlight onPress={onPress}>
             <View elevation={1} style={styles.container}>

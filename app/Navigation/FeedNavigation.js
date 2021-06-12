@@ -6,7 +6,6 @@ import { createStackNavigator } from "@react-navigation/stack"
 import EbooksCategoryScreen from '../screens/EbooksCategoryScreen';
 import BooksOfCategory from '../screens/BooksOfCategory';
 import Book from '../components/Book';
-import AppNavigation from './AppNavigation';
 import BookInfoScreen from '../screens/BookInfoScreen';
 
 const Stack = createStackNavigator();

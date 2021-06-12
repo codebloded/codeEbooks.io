@@ -6,11 +6,12 @@ import Screen from '../components/Screen'
 import AppText from '../components/AppText'
 
 
-export default function BookInfoScreen({ title, size, pages, description }) {
+export default function BookInfoScreen({ route, description }) {
+    const { title,thumbnailUrl, pages, size } = route.params
     return (
         <Screen style={styles.container}>
             <View style={styles.detailsContainer}>
-                <Image style={styles.image} source={require("../assets/pi.png")} />
+                <Image style={styles.image} source={{uri:thumbnailUrl}} />
                 <View style={styles.info}>
                     <AppText>{title}</AppText>
                     <AppText>Size:  {size} MB</AppText>

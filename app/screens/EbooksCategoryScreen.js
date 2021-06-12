@@ -1,84 +1,117 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { View, Text, StyleSheet, FlatList } from 'react-native'
+import { db } from '../Backend/firebase'
 import Category from '../components/Category'
 import Screen from '../components/Screen'
 import Colors from '../config/colors'
 
-const ebooksData = [
+const ebooksStatic = [
+    {
+        id: 0,
+        titleStatic: "cpp",
+        imageStatic: require("../assets/db.png")
+    },
     {
         id: 1,
-        title: "js",
-        image: require("../assets/algo.png")
+        titleStatic: "php",
+        imageStatic: require("../assets/algo.png")
     },
     {
         id: 2,
-        title: "algo",
-        image: require("../assets/cpp.png")
+        titleStatic: "algo",
+        imageStatic: require("../assets/cpp.png")
     },
     {
         id: 3,
-        title: "php",
-        image: require("../assets/cpp.png")
+        titleStatic: "php",
+        imageStatic: require("../assets/c.png")
     },
     {
         id: 4,
-        title: "java",
-        image: require("../assets/c.png")
+        titleStatic: "java",
+        imageStatic: require("../assets/c.png")
     },
     {
         id: 5,
-        title: "Javafirecript",
-        image: require("../assets/cpp.png")
+        titleStatic: "Javafirecript",
+        imageStatic: require("../assets/ruby.png")
     },
     {
         id: 6,
-        title: "base",
-        image: require("../assets/ruby.png")
+        titleStatic: "base",
+        imageStatic: require("../assets/ruby.png")
     },
     {
         id: 8,
-        title: "haskel",
-        image: require("../assets/php.png")
+        titleStatic: "haskel",
+        imageStatic: require("../assets/php.png")
     },
     {
         id: 9,
-        title: "haskel",
-        image: require("../assets/pi.png")
+        titleStatic: "haskel",
+        imageStatic: require("../assets/pi.png")
     },
     {
         id: 10,
-        title: "haskel",
-        image: require("../assets/matlab.png")
+        titleStatic: "haskel",
+        imageStatic: require("../assets/matlab.png")
     },
     {
         id: 11,
-        title: "haskel",
-        image: require("../assets/db.png")
+        titleStatic: "haskel",
+        imageStatic: require("../assets/db.png")
     },
     {
         id: 12,
-        title: "haskel",
-        image: require("../assets/ios.png")
+        titleStatic: "haskel",
+        imageStatic: require("../assets/ios.png")
     },
     {
         id: 13,
-        title: "haskel",
-        image: require("../assets/android.png")
+        titleStatic: "haskel",
+        imageStatic: require("../assets/android.png")
     },
 ]
 
+
 export default function EbooksCategoryScreen({ navigation }) {
+    const [ebooksData, setBooksData] = useState()
+    useEffect(() => {
+        fetchData()
+    }, []);
+    const fetchData = async () => {
+        const res = await db.collection('ebooks')
+            .get()
+            .then((snapShot) => {
+                const data = snapShot.docs.map(doc => {
+                    const resultSnap = doc.data()
+                    setBooksData(resultSnap)
+
+
+                })
+            })
+    }
+    // const finalData = [...ebooksStatic, ebooksData]
+    console.log(ebooksData)
+
     return (
         <Screen style={styles.container}>
             <FlatList
-                data={ebooksData}
+                data={ebooksStatic}
                 numColumns={2}
                 keyExtractor={ebook => ebook.id.toString()}
                 renderItem={({ item }) => (
                     <Category
-                        title={item.title}
-                        image={item.image}
-                        onPress={() => navigation.navigate('CategoryBooks')}
+                        title={item.titleStatic}
+                        image={item.imageStatic}
+                        onPress={() => {
+
+                            console.log(ebooksData.ebooks[item.id][item.titleStatic])
+
+                            return navigation.navigate('CategoryBooks', ebooksData.ebooks[item.id][item.titleStatic])
+                        }}
                     />
                 )}
             />
