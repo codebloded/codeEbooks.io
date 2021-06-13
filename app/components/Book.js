@@ -7,7 +7,7 @@ import AppText from './AppText'
 export default function Book({ title, image, pages, onPress, size }) {
     return (
 
-        <TouchableHighlight onPress={onPress}>
+        <TouchableOpacity activeOpacity={0.9} onPress={onPress}>
             <View style={styles.container}>
                 <Image style={styles.image} source={{ uri: image }} />
                 <AppText>{title}</AppText>
@@ -18,7 +18,7 @@ export default function Book({ title, image, pages, onPress, size }) {
                 </View>
 
             </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
 
     )
 }

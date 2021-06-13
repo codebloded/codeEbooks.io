@@ -6,12 +6,12 @@ import AppText from './AppText'
 export default function Category({ title, image, onPress }) {
 
     return (
-        <TouchableHighlight onPress={onPress}>
+        <TouchableOpacity activeOpacity={0.9} onPress={onPress}>
             <View elevation={1} style={styles.container}>
                 <Image style={styles.image} source={image} />
                 <AppText>{title}</AppText>
             </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
     )
 }
 

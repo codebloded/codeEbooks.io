@@ -8,8 +8,6 @@ import Screen from '../components/Screen'
 
 export default function BooksOfCategory({ route, navigation }) {
     const booksData = route.params
-    console.log("BooksOfCategory")
-    console.log(booksData);
 
     return (
         <Screen style={styles.container}>
